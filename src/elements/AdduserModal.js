@@ -41,14 +41,14 @@ export default function AddUserModal({ handleOpen, open, setOpen }) {
     
     useEffect(() => {
         setInitialComp(<StepOne setMoveToStepTwo={setMoveToStepTwo} handleClose={handleClose}/>)
-    }, [handleClose])
+    },[])
 
     useEffect(() => {
         if (moveToStepTwo === true) {
             setInitialComp(<StepTwo setMoveToStepThree={setMoveToStepThree} handleBack={ handleBack}/>)
             setCheck(<CheckIconsBack/>)
         }
-    }, [moveToStepTwo, handleBack])
+    }, [moveToStepTwo])
 
     useEffect(() => {
         if (moveToStepThree === true) {

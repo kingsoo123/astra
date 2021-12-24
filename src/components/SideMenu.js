@@ -53,7 +53,7 @@ const SideMenu = (props) => {
     }
 
     props.onCollapse(inactive);
-  }, [inactive]);
+  }, [inactive, props]);
 
   //just an improvment and it is not recorded in video :(
   const removeActiveClassFromSubMenu = () => {

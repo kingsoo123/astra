@@ -3,7 +3,7 @@ import { isEmpty } from "../helpers/functions";
 
 
 
-const { IS_PROCESSING, USER_AUTH_SUCCESS, USER_AUTH_FAILURE, USER_LOGOUT, RESET_AUTH_ERROR, IS_LOGGING_OUT } = TYPES;
+const { USER_AUTH_SUCCESS, USER_AUTH_FAILURE} = TYPES;
 
 const initiaState = {
     isAuthenticated: false,
