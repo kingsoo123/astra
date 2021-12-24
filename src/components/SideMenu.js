@@ -39,8 +39,8 @@ export const menuItems = [
   //     { name: "Videos", to: "/content-2/videos" },
   //   ],
   // },
-  { name: "Loan Management", to: `/design-2`, iconClassName: "bi bi-vector-pen", component: Dashboard },
-  { name: "Funds Management", to: `/design-3`, iconClassName: "bi bi-vector-pen", component: Dashboard },
+  { name: "Loan Management", to: `/dashboard`, iconClassName: "bi bi-vector-pen", component: Dashboard },
+  { name: "Funds Management", to: `/dashboard`, iconClassName: "bi bi-vector-pen", component: Dashboard },
   { name: "Settings", to: `/settings`, iconClassName: "bi bi-sliders", component: Settings },
 ];
 
