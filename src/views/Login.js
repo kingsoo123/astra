@@ -60,7 +60,7 @@ const Login = () => {
                     <FormInput>
                         <SignIn>Sign in</SignIn>
                     <p style={{marginTop: 20}}>
-                    Manage users, plans stream and more on SpurtFlix movie streaming platform.
+                    Astrkash backend management platform.
                         </p>
                         <div style={{width:250, height:2, background:'#1742D9', marginTop:20}}>
                         </div><br /><br />

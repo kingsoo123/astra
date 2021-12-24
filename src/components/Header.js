@@ -3,17 +3,14 @@ import Menu from '@mui/material/Menu';
 import MenuItem from '@mui/material/MenuItem';
 import NotificationsActiveSharpIcon from '@mui/icons-material/NotificationsActiveSharp';
 import ArrowDropDownIcon from '@mui/icons-material/ArrowDropDown';
+import { useHistory } from 'react-router';
 
 
-
-const options = [
-    'Logout',
-];
-  
 
 const ITEM_HEIGHT = 48;
 
 const Header = () => {
+  const history = useHistory()
     const [anchorEl, setAnchorEl] = React.useState(null);
   const open = Boolean(anchorEl);
   const handleClick = (event) => {
@@ -21,6 +18,8 @@ const Header = () => {
   };
   const handleClose = () => {
     setAnchorEl(null);
+    console.log('yes')
+    history.push('/')
   };
     return (
         <div className="header_wrap">
@@ -51,14 +50,12 @@ const Header = () => {
           },
         }}
       >
-        {options.map((option) => (
-          <MenuItem key={option} selected={option === 'Pyxis'} onClick={handleClose}>
-            {option}
+          <MenuItem onClick={handleClose}>
+            Logout
           </MenuItem>
-        ))}
       </Menu>
         </span>
-                </div>
+        </div>
         </div>
         </div>
     )
