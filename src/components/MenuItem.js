@@ -1,4 +1,4 @@
-import React, { useRef, useState } from "react";
+import React, { useState } from "react";
 import { NavLink, Link } from "react-router-dom";
 
 /**
@@ -7,17 +7,13 @@ import { NavLink, Link } from "react-router-dom";
  **/
 
 const MenuItem = (props) => {
-  const { name, subMenus, iconClassName, onClick, to, exact } = props;
-  const [expand, setExpand] = useState(false);
+  const { name, subMenus, iconClassName, to } = props;
 
   return (
     <li onClick={props.onClick} style={{marginTop:15}} className="list-menu">
       <Link
         exact
         to={to}
-        // onClick={() => {
-        //   setExpand((e) => !e);
-        // }}
         className={`menu-item`}
       >
         <div className="menu-icon">
