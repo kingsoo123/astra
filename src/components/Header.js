@@ -1,4 +1,4 @@
-import React from "react"
+import React, {useState} from "react"
 import Menu from '@mui/material/Menu';
 import MenuItem from '@mui/material/MenuItem';
 import NotificationsActiveSharpIcon from '@mui/icons-material/NotificationsActiveSharp';
@@ -11,7 +11,8 @@ const ITEM_HEIGHT = 48;
 
 const Header = () => {
   const history = useHistory()
-    const [anchorEl, setAnchorEl] = React.useState(null);
+  const [anchorEl, setAnchorEl] = useState(null);
+  const [user]  = useState(localStorage.getItem('login'))
   const open = Boolean(anchorEl);
   const handleClick = (event) => {
     setAnchorEl(event.currentTarget);
@@ -21,6 +22,8 @@ const Header = () => {
     console.log('yes')
     history.push('/')
   };
+
+  console.log(localStorage.getItem('login'), 'from local storage')
     return (
         <div className="header_wrap">
             <div className="header_name">
@@ -32,7 +35,7 @@ const Header = () => {
                     <div className="userImage">
 
                     </div>
-                    <p>Seyi Martinz</p>
+                    <p>{user}</p>
                     <span style={{marginTop: 8}}>
                         < ArrowDropDownIcon onClick={handleClick} style={{cursor:'pointer'}}/>
           <Menu

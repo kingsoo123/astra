@@ -1,4 +1,4 @@
-import React from 'react'
+import React, {useState} from 'react'
 // import AdminInfo from '../components/AdminInfo';
 // import PrivacyAndSec from '../components/PrivacyAndSec'
 // import UserRole from '../components/UserRole';
@@ -24,9 +24,12 @@ const Dashboard = () => {
 //         setComp(<UserRole/>)
 //         setIsClicked(true)
 // }
+    
+const [user]  = useState(localStorage.getItem('login'))
+
     return (
         <div className="dashboard_wrapper">
-                Hi Seyi Martins
+                Hi {user}
             <Cards>
                 <div style={{ background: '#9694FF', width: 220, height: 170, padding: 15, display:'flex', flexDirection:'column', justifyContent:'space-between' }}>
                     <div>

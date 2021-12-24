@@ -35,7 +35,8 @@ const Login = () => {
    }
 
       const onSubmit = (data) => {
-        console.log(data);
+        console.log(data, 'from login');
+        localStorage.setItem('login', data.email)
         dispatch(getUser(data))
           notify()
         // api call with data here
