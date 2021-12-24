@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from 'react'
+import React from 'react'
 import styled from "styled-components"
 import bg from "../assets/bg.png"
 import TextField from '@mui/material/TextField';
@@ -20,7 +20,6 @@ const defaultValues = { email: "", password: "" };
 const Login = () => {
   const dispatch = useDispatch()
     const history = useHistory()
-    const [user, setUser] = useState('kingsley')
     const {
         handleSubmit,
         reset,

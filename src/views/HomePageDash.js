@@ -1,33 +1,29 @@
-import React, {useState} from 'react'
-import PersonIcon from '@mui/icons-material/Person';
-import WorkIcon from '@mui/icons-material/Work';
-import AssignmentIndIcon from '@mui/icons-material/AssignmentInd';
-import ChevronLeftIcon from '@mui/icons-material/ChevronLeft';
-import AdminInfo from '../components/AdminInfo';
-import PrivacyAndSec from '../components/PrivacyAndSec'
-import UserRole from '../components/UserRole';
+import React from 'react'
+// import AdminInfo from '../components/AdminInfo';
+// import PrivacyAndSec from '../components/PrivacyAndSec'
+// import UserRole from '../components/UserRole';
 import styled from "styled-components"
 
 
 
 const Dashboard = () => {
-    const [comp, setComp] = useState(null)
-    const [isClicked, setIsClicked] = useState(false)
+    // const [comp, setComp] = useState(null)
+    // const [isClicked, setIsClicked] = useState(false)
 
-    const showAdmin = () => {
-        setComp(<AdminInfo/>)
-        setIsClicked(true)
-    }
+    // const showAdmin = () => {
+    //     setComp(<AdminInfo/>)
+    //     setIsClicked(true)
+    // }
 
-    const showPrivacy = () => {
-        setComp(<PrivacyAndSec/>)
-        setIsClicked(true)
-    }
+    // const showPrivacy = () => {
+    //     setComp(<PrivacyAndSec/>)
+    //     setIsClicked(true)
+    // }
 
-    const showUser = () => {
-        setComp(<UserRole/>)
-        setIsClicked(true)
-}
+//     const showUser = () => {
+//         setComp(<UserRole/>)
+//         setIsClicked(true)
+// }
     return (
         <div className="dashboard_wrapper">
                 Hi Seyi Martins

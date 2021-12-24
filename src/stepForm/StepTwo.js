@@ -1,11 +1,8 @@
 import React from 'react'
-import styled from "styled-components"
 import Typography from '@mui/material/Typography';
 import FormControlLabel from '@mui/material/FormControlLabel';
 import Checkbox from '@mui/material/Checkbox';
 import Button from '@mui/material/Button';
-import Radio from '@mui/material/Radio';
-import RadioGroup from '@mui/material/RadioGroup';
 
 
 const StepTwo = ({setMoveToStepThree, handleBack}) => {

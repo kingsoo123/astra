@@ -1,4 +1,4 @@
-import React, {useState, useEffect} from 'react';
+import React, {useState, useEffect, useCallback} from 'react';
 import Backdrop from '@mui/material/Backdrop';
 import Box from '@mui/material/Box';
 import Modal from '@mui/material/Modal';
@@ -25,30 +25,33 @@ const style = {
   p: 4,
 };
 
-export default function AddUserModal({ handleOpen, open, setOpen }) {
+function AddUserModal({ open, setOpen }) {
     const [moveToStepTwo, setMoveToStepTwo] = useState(false)
     const [moveToStepThree, setMoveToStepThree] = useState(false)
     const [initialComp, setInitialComp] = useState(null)
     const [checkTwo, setCheck] = useState(<CheckIcons />)
     const [checkThree, setCheckThree] = useState(<CheckIcons/>)
-  const handleClose = () => setOpen(false);
+  const handleClose = useCallback(() => {
+    setOpen(false);
+  }, [setOpen]); 
 
     
-  const handleBack = () =>{
+  const handleBack = useCallback(() => {
+    // handle the click event
     setMoveToStepTwo(false)
     setInitialComp(<StepOne setMoveToStepTwo={setMoveToStepTwo} handleClose={handleClose}/>)
-  }
+  }, [handleClose])
     
     useEffect(() => {
         setInitialComp(<StepOne setMoveToStepTwo={setMoveToStepTwo} handleClose={handleClose}/>)
-    },[])
+    }, [handleClose])
 
     useEffect(() => {
         if (moveToStepTwo === true) {
             setInitialComp(<StepTwo setMoveToStepThree={setMoveToStepThree} handleBack={ handleBack}/>)
             setCheck(<CheckIconsBack/>)
         }
-    }, [moveToStepTwo])
+    }, [moveToStepTwo, handleBack])
 
     useEffect(() => {
         if (moveToStepThree === true) {
@@ -58,11 +61,6 @@ export default function AddUserModal({ handleOpen, open, setOpen }) {
     }, [moveToStepThree])
 
 
-    // useEffect(() => {
-        
-    // }, )
-
-    
 
     console.log(moveToStepTwo, 'from moveeeeeeee')
   return (
@@ -122,6 +120,8 @@ export default function AddUserModal({ handleOpen, open, setOpen }) {
   );
 }
 
+
+export default React.memo(AddUserModal)
 
 const FormStep = styled.div`
 width: 70%;
@@ -184,3 +184,5 @@ height: 500px;
 background:#EBEBEB;
 margin-top: 100px;
 `;
+
+
