@@ -9,7 +9,7 @@ import ActiveUsers from './ActiveUsers';
 const UserRole = () => {
     const [open, setOpen] = useState(false);
     const handleOpen = () => setOpen(true);
-    const [activeUsers, setActiveUsers] = useState(true)
+    const [activeUsers] = useState(true)
     
 
     return (
