@@ -13,20 +13,25 @@ const Header = () => {
   const auth = useSelector(state => state.auth)
   const history = useHistory()
   const [anchorEl, setAnchorEl] = useState(null);
-  const [user] = useState(localStorage.getItem('firstname'))
+  const [user] = useState(localStorage.getItem('login'))
   const open = Boolean(anchorEl);
   const handleClick = (event) => {
     setAnchorEl(event.currentTarget);
   };
   const handleClose = () => {
     setAnchorEl(null);
+    console.log('yes')
     localStorage.clear()
     history.push('/')
   };
 
 
+  useEffect(() => {
+    if (auth?.isAuthenticated === true) {
+      toast("Welcome")
+    }
+  }, [auth?.isAuthenticated])
 
- 
 
     return (
         <div className="header_wrap">
