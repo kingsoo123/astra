@@ -1,10 +1,8 @@
-import React, {useState, useEffect} from 'react'
+import React, {useState} from 'react'
 // import AdminInfo from '../components/AdminInfo';
 // import PrivacyAndSec from '../components/PrivacyAndSec'
 // import UserRole from '../components/UserRole';
 import styled from "styled-components"
-import axios from 'axios'
-import { useSelector } from "react-redux";
 
 
 
@@ -26,26 +24,12 @@ const Dashboard = () => {
 //         setComp(<UserRole/>)
 //         setIsClicked(true)
 // }
-const auth = useSelector(state => state.auth)
-const [user, setUser]  = useState()
+    
+const [user]  = useState(localStorage.getItem('firstname'))
 
-    
-    
-useEffect(() => {
-    if (auth?.user?.access_token !== '') {
-      axios.get('http://adminservice-env.eba-ubpbf6se.us-east-2.elasticbeanstalk.com/index.php/api/v1/dashboard', {
-        headers: {
-          "Authorization": `Bearer ${auth?.user?.access_token}`
-        }
-      }).then(res => {
-          console.log(res?.data?.message, 'from headers')
-          setUser(res?.data?.message)
-      })
-    }
-  }, [auth?.user?.access_token])
     return (
         <div className="dashboard_wrapper">
-                Hi {user}
+                Welcome {user}
             <Cards>
                 <div style={{ background: '#9694FF', width: 220, height: 170, padding: 15, display:'flex', flexDirection:'column', justifyContent:'space-between' }}>
                     <div>

@@ -13,7 +13,9 @@ export const getUser = (data) => {
             dispatch({ type: USER_AUTH_SUCCESS, payload: res?.data?.data })
             console.log(res?.data?.data, 'from success')
             let token = res?.data?.data?.access_token
+            let firstname = res?.data?.data?.user?.firstname
             localStorage.setItem('token', token)
+            localStorage.setItem('firstname', firstname)
         })
             .catch(error => {
                 console.log(error, 'from error messssss')
