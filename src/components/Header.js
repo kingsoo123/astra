@@ -7,6 +7,7 @@ import { useHistory } from 'react-router';
 import { useSelector } from "react-redux";
 import { ToastContainer, toast } from 'react-toastify';
 
+
 const ITEM_HEIGHT = 48;
 
 const Header = () => {
@@ -26,9 +27,13 @@ const Header = () => {
   };
 
 
+
+  console.log(auth?.user, 'from auth')
   useEffect(() => {
-    if (auth?.isAuthenticated === true) {
+    if (auth?.isAuthenticated) {
       toast("Welcome")
+    } else {
+      history.push("/")
     }
   }, [auth?.isAuthenticated])
 
