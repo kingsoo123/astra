@@ -35,7 +35,7 @@ const Header = () => {
     } else {
       history.push("/")
     }
-  }, [auth?.isAuthenticated])
+  }, [auth?.isAuthenticated, history])
 
 
     return (
