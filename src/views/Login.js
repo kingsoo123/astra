@@ -1,4 +1,4 @@
-import React from 'react'
+import React, {useState} from 'react'
 import styled from "styled-components"
 import bg from "../assets/bg.png"
 import TextField from '@mui/material/TextField';
@@ -6,11 +6,21 @@ import Button from '@mui/material/Button';
 import { useHistory } from 'react-router';
 import { useForm, Controller } from 'react-hook-form';
 import logo from '../assets/Astrakash.png'
-import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { getUser } from '../actions/creators/AuthAction';
 import { useDispatch } from 'react-redux';
+import ClipLoader from "react-spinners/ClipLoader";
+import { css } from "@emotion/react";
+import IconButton from '@mui/material/IconButton';
+import InputAdornment from '@mui/material/InputAdornment';
+import Visibility from '@mui/icons-material/Visibility';
+import VisibilityOff from '@mui/icons-material/VisibilityOff';
 
+const override = css`
+  display: block;
+  margin: 0 auto;
+  border-color: white;
+`;
 
 const defaultValues = { email: "", password: "" };
 
@@ -26,16 +36,19 @@ const Login = () => {
         control,
         formState: { errors }
       } = useForm({ defaultValues });
-
+      const [showPassword, setShowPassword] = useState(false);
+      const handleClickShowPassword = () => setShowPassword(!showPassword);
+      const handleMouseDownPassword = () => setShowPassword(!showPassword);
+  
+      let [loading, setLoading] = useState(false);
     const notify = () => {
-        toast("You're Signed in!")
+      setLoading(true)
         setTimeout(() => {
             history.push('/dashboard')
         }, 3000);
    }
 
       const onSubmit = (data) => {
-        console.log(data, 'from login');
         localStorage.setItem('login', data.email)
         dispatch(getUser(data))
           notify()
@@ -99,7 +112,6 @@ const Login = () => {
           render={({ field }) => (
             <TextField
               label="Password"
-              type="password"
               variant="outlined"
               {...field}
               helperText={
@@ -114,15 +126,32 @@ const Login = () => {
                   )}
                 </>
               }
+
+              type={showPassword ? "text" : "password"} // <-- This is where the magic happens
+  InputProps={{ // <-- This is where the toggle button is added.
+    endAdornment: (
+      <InputAdornment position="end">
+        <IconButton
+          aria-label="toggle password visibility"
+          onClick={handleClickShowPassword}
+          onMouseDown={handleMouseDownPassword}
+        >
+          {showPassword ? <Visibility /> : <VisibilityOff />}
+        </IconButton>
+      </InputAdornment>
+    )
+  }}
               style={{ width: '100%' }}/>
           )}
         />
-            <Button disableElevation type="submit" variant="contained" style={{width:'100%', height: 50, marginTop: 60}}>Sign In</Button>
+                <Button disableElevation type="submit" variant="contained" style={{ width: '100%', height: 50, marginTop: 60 }}>
+                  {loading === true ? <ClipLoader loading={loading} css={override} size={30} /> : 'Sign In ' }
+                </Button>
             </form>
         </FormInput>
          </FormContent>
             </BackDrop>
-            <ToastContainer />
+           
         </Container>
     )
 }

@@ -1,18 +1,19 @@
-import React, {useState} from "react"
+import React, {useState, useEffect} from "react"
 import Menu from '@mui/material/Menu';
 import MenuItem from '@mui/material/MenuItem';
 import NotificationsActiveSharpIcon from '@mui/icons-material/NotificationsActiveSharp';
 import ArrowDropDownIcon from '@mui/icons-material/ArrowDropDown';
 import { useHistory } from 'react-router';
-
-
+import { useSelector } from "react-redux";
+import { ToastContainer, toast } from 'react-toastify';
 
 const ITEM_HEIGHT = 48;
 
 const Header = () => {
+  const auth = useSelector(state => state.auth)
   const history = useHistory()
   const [anchorEl, setAnchorEl] = useState(null);
-  const [user]  = useState(localStorage.getItem('login'))
+  const [user, setUser] = useState('')
   const open = Boolean(anchorEl);
   const handleClick = (event) => {
     setAnchorEl(event.currentTarget);
@@ -20,10 +21,20 @@ const Header = () => {
   const handleClose = () => {
     setAnchorEl(null);
     console.log('yes')
+    localStorage.clear()
     history.push('/')
   };
 
-  console.log(localStorage.getItem('login'), 'from local storage')
+
+  useEffect(() => {
+    if (auth?.isAuthenticated === true) {
+      toast("Welcome")
+      setUser(auth?.user?.user?.firstname)
+    }
+  }, [auth?.isAuthenticated, auth?.user?.user?.firstname])
+
+ 
+
     return (
         <div className="header_wrap">
             <div className="header_name">
@@ -60,6 +71,7 @@ const Header = () => {
         </span>
         </div>
         </div>
+        <ToastContainer />
         </div>
     )
 }

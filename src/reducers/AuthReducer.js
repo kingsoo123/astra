@@ -21,7 +21,6 @@ export const authReducer = (state = initiaState, action) => {
                 ...state,
                 isAuthenticated: !isEmpty(action.payload),
                 user: action.payload,
-                error: "",
             };
 
             case USER_AUTH_FAILURE:
