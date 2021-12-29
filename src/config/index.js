@@ -7,7 +7,7 @@ const config = () => {
     cache = Object.freeze({
       env,
       secrets: {
-        apiHost: "http://adminservice-env.eba-ubpbf6se.us-east-2.elasticbeanstalk.com/index.php/api",
+        apiHost: "/api/adminservice-env.eba-ubpbf6se.us-east-2.elasticbeanstalk.com/index.php/api",
       },
     });
   }

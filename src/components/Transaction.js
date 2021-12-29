@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useEffect, useState, useMemo} from 'react';
 import Paper from '@mui/material/Paper';
 import Table from '@mui/material/Table';
 import TableBody from '@mui/material/TableBody';
@@ -8,6 +8,10 @@ import TableHead from '@mui/material/TableHead';
 import TablePagination from '@mui/material/TablePagination';
 import TableRow from '@mui/material/TableRow';
 import axios from 'axios';
+import config from '../config';
+
+
+const baseURL = config().secrets.apiHost;
 
 
 const columns = [
@@ -49,30 +53,13 @@ function createData(name, phone, amount, date, payback, due_date, status) {
   return { name, phone, amount, date, payback, due_date, status };
 }
 
-const token = localStorage.getItem('token')
-let rows= [
-    createData(),
-];
-  setTimeout(() => {
-      axios.get('http://adminservice-env.eba-ubpbf6se.us-east-2.elasticbeanstalk.com/index.php/api/v1/list_transactions', {
-    headers: {
-        "Authorization" : `Bearer ${token}`
-    }
-}).then(res => {
-    console.log(res?.data?.data, 'from loannnnnnnn')
-    res?.data?.data.map((row,i) => (
-        rows[i] = createData(`${row?.user?.email}`, `${row?.user?.phone_no}`, `${row?.amount}`, new Date().toISOString().slice(0, 10), '', '', `${row?.status}`)
-    ))
-})
-  }, 3000);
-
 
 
 
 export default function Transaction() {
   const [page, setPage] = useState(0);
     const [rowsPerPage, setRowsPerPage] = useState(10);
-
+    const [rows, setRows] = useState([])
   const handleChangePage = (event, newPage) => {
     setPage(newPage);
   };
@@ -82,6 +69,29 @@ export default function Transaction() {
     setPage(0);
   };
 
+
+  const token = localStorage.getItem('token')
+  const rowValue = useMemo(
+    () => {
+        let rowed = []
+        return rowed
+    },
+    []
+)
+
+useEffect(() => {
+            axios.get(`${baseURL}/v1/list_transactions`, {
+          headers: {
+              "Authorization" : `Bearer ${token}`
+          }
+            }).then(res => {
+                console.log(res?.data?.data, 'from loannnnnnnn')
+                res?.data?.data.map((row, i) => {
+                    rowValue[i] = createData(`${row?.user?.email}`, `${row?.user?.phone_no}`, `${row?.loan_amount}`, new Date().toISOString().slice(0, 10), '', '', `${row?.loan_status}`)
+                 return setRows([...rowValue])
+      })
+      })
+}, [rowValue, token])
     return (
         <div className="dashboard_wrapper">
     <Paper sx={{ width: '100%', overflow: 'hidden' }}>
@@ -101,7 +111,7 @@ export default function Transaction() {
             </TableRow>
           </TableHead>
           <TableBody>
-            {rows
+            {Array.isArray(rows) === true && rows
               .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
               .map((row) => {
                 return (
