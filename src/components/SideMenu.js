@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import MenuItem from "./MenuItem";
 import Settings from "../views/Dashboard";
 import Dashboard from "../views/HomePageDash";
-
+import LoanComponent from "../views/Loans";
 /**
  * @author
  * @function SideMenu
@@ -41,6 +41,7 @@ export const menuItems = [
   // },
   // { name: "Loan Management", to: `/design-2`, iconClassName: "bi bi-vector-pen", component: Dashboard },
   // { name: "Funds Management", to: `/design-3`, iconClassName: "bi bi-vector-pen", component: Dashboard },
+  { name: "Loans", to: `/loans`, iconClassName: "bi bi-cash-stack", component: LoanComponent },
   { name: "Settings", to: `/settings`, iconClassName: "bi bi-sliders", component: Settings },
 ];
 

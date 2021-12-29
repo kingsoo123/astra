@@ -3,6 +3,7 @@ import React, {useState} from 'react'
 // import PrivacyAndSec from '../components/PrivacyAndSec'
 // import UserRole from '../components/UserRole';
 import styled from "styled-components"
+import StickyHeadTable from '../components/LoanTable'
 
 
 
@@ -31,7 +32,7 @@ const [user]  = useState(localStorage.getItem('firstname'))
         <div className="dashboard_wrapper">
                 Welcome {user}
             <Cards>
-                <div style={{ background: '#9694FF', width: 220, height: 170, padding: 15, display:'flex', flexDirection:'column', justifyContent:'space-between' }}>
+                <div style={{ background: '#13124B', width: 220, height: 170, padding: 15, display:'flex', flexDirection:'column', justifyContent:'space-between' }}>
                     <div>
                     <p style={{ fontSize:16, color:'#fff'}}>Total Clients</p>
                     <h4 style={{ fontSize:24, color:'#fff'}}>1077</h4>
@@ -49,7 +50,7 @@ const [user]  = useState(localStorage.getItem('firstname'))
                         </span>
                     </div>
                 </div>
-                <div style={{background:'#57CAEA', width:220, height:170, padding: 15, display:'flex', flexDirection:'column', justifyContent:'space-between'}}>
+                <div style={{background:'#057898', width:220, height:170, padding: 15, display:'flex', flexDirection:'column', justifyContent:'space-between'}}>
                 <div>
                     <p style={{ fontSize:16, color:'#fff'}}>Total Disbursed Loan </p>
                     <h4 style={{ fontSize:24, color:'#fff'}}>N 10,277,000.00</h4>
@@ -67,7 +68,7 @@ const [user]  = useState(localStorage.getItem('firstname'))
                         </span>
                     </div>
                 </div>
-                <div style={{background:'#5DD9B4', width:220, height:170, padding: 15, display:'flex', flexDirection:'column', justifyContent:'space-between'}}>
+                <div style={{background:'#1C8A69', width:220, height:170, padding: 15, display:'flex', flexDirection:'column', justifyContent:'space-between'}}>
                 <div>
                     <p style={{ fontSize:16, color:'#fff'}}>Total Merchants</p>
                     <h4 style={{ fontSize:24, color:'#fff'}}>1077</h4>
@@ -104,6 +105,12 @@ const [user]  = useState(localStorage.getItem('firstname'))
                     </div>
                 </div>
             </Cards>
+            <div style={{
+                width: '100%', marginTop: 30, display:'flex', justifyContent:'space-between'}}>
+                <div style={{width:'100%'}}>
+                <StickyHeadTable/>
+                </div>
+            </div>
         </div>
     )
 }

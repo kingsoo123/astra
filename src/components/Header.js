@@ -14,7 +14,7 @@ const Header = () => {
   const auth = useSelector(state => state.auth)
   const history = useHistory()
   const [anchorEl, setAnchorEl] = useState(null);
-  const [user] = useState(localStorage.getItem('login'))
+  const [user] = useState(localStorage.getItem('firstname'))
   const open = Boolean(anchorEl);
   const handleClick = (event) => {
     setAnchorEl(event.currentTarget);
@@ -41,7 +41,7 @@ const Header = () => {
     return (
         <div className="header_wrap">
             <div className="header_name">
-                <p>System Settings</p>
+                <p>Dashboard</p>
             </div>
                 <div className="header_user">
                 <NotificationsActiveSharpIcon className="svg_icons"/>
