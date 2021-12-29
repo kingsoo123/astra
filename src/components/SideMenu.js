@@ -3,6 +3,7 @@ import MenuItem from "./MenuItem";
 import Settings from "../views/Dashboard";
 import Dashboard from "../views/HomePageDash";
 import LoanComponent from "../views/Loans";
+import Transaction from "./Transaction";
 /**
  * @author
  * @function SideMenu
@@ -42,6 +43,7 @@ export const menuItems = [
   // { name: "Loan Management", to: `/design-2`, iconClassName: "bi bi-vector-pen", component: Dashboard },
   // { name: "Funds Management", to: `/design-3`, iconClassName: "bi bi-vector-pen", component: Dashboard },
   { name: "Loans", to: `/loans`, iconClassName: "bi bi-cash-stack", component: LoanComponent },
+  { name: "Transactions", to: `/transactions`, iconClassName: "bi bi-calendar3-range", component: Transaction },
   { name: "Settings", to: `/settings`, iconClassName: "bi bi-sliders", component: Settings },
 ];
 

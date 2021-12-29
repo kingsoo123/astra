@@ -28,7 +28,7 @@ const Header = () => {
 
 
 
-  console.log(auth?.user, 'from auth')
+  
   useEffect(() => {
     if (auth?.isAuthenticated) {
       toast("Welcome")

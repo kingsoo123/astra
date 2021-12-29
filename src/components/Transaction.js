@@ -69,7 +69,7 @@ let rows= [
 
 
 
-export default function StickyHeadTable() {
+export default function Transaction() {
   const [page, setPage] = useState(0);
     const [rowsPerPage, setRowsPerPage] = useState(10);
 
@@ -82,7 +82,8 @@ export default function StickyHeadTable() {
     setPage(0);
   };
 
-  return (
+    return (
+        <div className="dashboard_wrapper">
     <Paper sx={{ width: '100%', overflow: 'hidden' }}>
       <TableContainer sx={{ maxHeight: 440 }}>
         <Table stickyHeader aria-label="sticky table">
@@ -130,7 +131,8 @@ export default function StickyHeadTable() {
         onPageChange={handleChangePage}
         onRowsPerPageChange={handleChangeRowsPerPage}
       />
-    </Paper>
+            </Paper>
+            </div>
   );
 }
 
